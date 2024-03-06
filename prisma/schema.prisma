@@ -35,8 +35,8 @@ model Bill {
   is_active    Boolean
   is_current   Boolean
   created_at   DateTime    @default(now())
-  finished_at  DateTime
-  cancelled_at DateTime
+  finished_at  DateTime?
+  cancelled_at DateTime?
   BillShare    BillShare[]
 
   @@map("bill")
