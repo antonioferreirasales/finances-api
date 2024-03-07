@@ -14,5 +14,5 @@ app
     host: '0.0.0.0',
   })
   .then(() => {
-    console.log('The server has started! ')
+    console.log('The server has started! 💵')
   })
