@@ -1,12 +1,5 @@
 import { env } from './env'
-import Fastify from 'fastify'
-import { appRoutes } from './http/routes'
-
-const app = Fastify({
-  logger: true,
-})
-
-app.register(appRoutes)
+import { app } from './app'
 
 app
   .listen({
