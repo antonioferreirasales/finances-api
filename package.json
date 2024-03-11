@@ -17,6 +17,7 @@
   "author": "Antônio Sales",
   "license": "MIT",
   "dependencies": {
+    "@fastify/cors": "9.0.1",
     "@prisma/client": "5.10.2",
     "bcryptjs": "2.4.3",
     "fastify": "4.26.2",
