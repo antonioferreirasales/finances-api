@@ -26,20 +26,38 @@ model User {
 }
 
 model Bill {
-  id      String @id @default(uuid())
-  user_id String
-  user    User   @relation(fields: [user_id], references: [id])
+  id String @id @default(uuid())
 
-  total_value  Decimal
+  user_id    String
+  user       User     @relation(fields: [user_id], references: [id])
+  type       Int
+  billTypeId BillType @relation(fields: [type], references: [id])
+
   description  String?
+  urgency      Level
+  importance   Level
+  total_value  Decimal
+  net_value    Decimal
+  delay        Int
+  pdf_url      String
+  receipt      String
+  is_recurring Boolean
   is_active    Boolean
-  is_current   Boolean
+  due_date     DateTime
   created_at   DateTime    @default(now())
-  finished_at  DateTime?
-  cancelled_at DateTime?
+  finished_at  DateTime
+  cancelled_at DateTime
   BillShare    BillShare[]
 
   @@map("bill")
+}
+
+model BillType {
+  id          Int    @id @default(autoincrement())
+  description String
+  Bill        Bill[]
+
+  @@map("bill_type")
 }
 
 model BillShare {
@@ -53,4 +71,10 @@ model BillShare {
   quantity   Int
 
   @@map("bill_share")
+}
+
+enum Level {
+  High
+  Medium
+  Low
 }
