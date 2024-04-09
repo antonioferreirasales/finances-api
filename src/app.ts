@@ -1,6 +1,6 @@
 import fastify from 'fastify'
 import cors from '@fastify/cors'
-import { appRoutes } from './http/routes'
+import { usersRoutes } from './http/controllers/users/routes'
 import { ZodError } from 'zod'
 import { env } from './env'
 
@@ -8,7 +8,7 @@ export const app = fastify({
   logger: true,
 })
 
-app.register(appRoutes)
+app.register(usersRoutes)
 app.register(cors, {
   origin: true,
 })
