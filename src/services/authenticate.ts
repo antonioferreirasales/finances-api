@@ -9,7 +9,7 @@ interface AuthenticateUseCaseRequest {
 }
 
 interface AuthenticateUseCaseResponse {
-  user: User | null
+  user: User
 }
 
 export class AuthenticateUseCase {
