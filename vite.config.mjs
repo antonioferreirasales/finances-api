@@ -6,4 +6,5 @@ export default defineConfig({
   test: {
     environmentMatchGlobs: [['src/http/controllers/**', 'prisma']],
   },
+  envDir: ".env"
 })
