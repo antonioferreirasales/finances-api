@@ -8,7 +8,7 @@ interface userToken {
 }
 
 export async function create(request: FastifyRequest, reply: FastifyReply) {
-  const createUser = z.object({
+  const createBill = z.object({
     billTypeID: z.coerce.number(),
     description: z.string(),
     is_recurring: z.boolean().default(false),
@@ -32,7 +32,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
     net_value,
     urgency,
     due_date,
-  } = createUser.parse(request.body)
+  } = createBill.parse(request.body)
 
   try {
     const createBillsUseCase = makeCreateBillsUseCase()
