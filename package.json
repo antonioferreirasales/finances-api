@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "A backend application for a finance application",
   "main": "index.js",
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
   "scripts": {
     "dev": "tsx watch --env-file .env src/server.ts",
     "start": "node --env-file .env build/server.js",

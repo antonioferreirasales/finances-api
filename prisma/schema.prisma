@@ -41,18 +41,18 @@ model Bill {
 
   description  String?
   urgency      Level
-  importance   Level
+  importance   Level?
   total_value  Decimal
-  net_value    Decimal
-  delay        Int
-  pdf_url      String
-  receipt      String
+  net_value    Decimal?
+  delay        Int?
+  pdf_url      String?
+  receipt      String?
   is_recurring Boolean
   is_active    Boolean
-  due_date     DateTime
+  due_date     DateTime?
   created_at   DateTime    @default(now())
-  finished_at  DateTime
-  cancelled_at DateTime
+  finished_at  DateTime?
+  cancelled_at DateTime?
   BillShare    BillShare[]
 
   @@map("bill")
