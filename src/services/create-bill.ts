@@ -5,10 +5,13 @@ import { Bill, $Enums, Prisma } from '@prisma/client'
 interface CreateBillUseCaseRequest {
   userId: string
   billTypeID: number
+  description: string
   is_recurring: boolean
   is_active: boolean
   urgency: $Enums.Level
-  total_value: string
+  total_value: number
+  net_value?: number
+  due_date: Date
 }
 
 interface CreateBillUseCaseResponse {
@@ -24,18 +27,25 @@ export class CreateBillUseCase {
   async execute({
     userId,
     billTypeID,
+    description,
     is_active,
     is_recurring,
     total_value,
+    net_value,
     urgency,
+    due_date,
   }: CreateBillUseCaseRequest): Promise<CreateBillUseCaseResponse> {
     const user = await this.usersRepository.findById(userId)
     const billType = await this.billsRepository.searchType(billTypeID)
     const bill = await this.billsRepository.create({
+      description,
       is_recurring,
       is_active,
       urgency,
-      total_value: new Prisma.Decimal(total_value),
+      // total_value: new Prisma.Decimal(total_value),
+      total_value: total_value,
+      net_value: net_value,
+      due_date,
       user: {
         connect: {
           id: userId,

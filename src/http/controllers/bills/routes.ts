@@ -5,5 +5,5 @@ import { create } from './create'
 export async function billsRoutes(app: FastifyInstance) {
   app.addHook('onRequest', verifyJWT)
 
-  app.post('/bills/create', create)
+  app.post('/bills', create)
 }
