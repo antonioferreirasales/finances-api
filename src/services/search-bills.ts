@@ -5,7 +5,7 @@ interface SearchBillUseCaseRequest {
   userID: string
 }
 
-interface SearchBillUseCase {
+interface SearchBillUseCaseResponse {
   bills: Bill[] | null
 }
 
@@ -14,7 +14,7 @@ export class SearchBillsUseCase {
 
   async execute({
     userID,
-  }: SearchBillUseCaseRequest): Promise<SearchBillUseCase> {
+  }: SearchBillUseCaseRequest): Promise<SearchBillUseCaseResponse> {
     const bills = await this.billsRepository.searchByUser(userID)
 
     return { bills }
