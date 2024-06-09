@@ -13,8 +13,8 @@ export async function history(request: FastifyRequest, reply: FastifyReply) {
   const userID = token.sub
 
   try {
-    const createBillsUseCase = makeSearchBillsUseCase()
-    const bills = await createBillsUseCase.execute({
+    const searchBillsUseCase = makeSearchBillsUseCase()
+    const bills = await searchBillsUseCase.execute({
       userID,
     })
     return await reply.status(200).send(bills)
