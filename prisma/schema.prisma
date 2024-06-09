@@ -39,11 +39,11 @@ model Bill {
   type       Int
   billTypeId BillType @relation(fields: [type], references: [id])
 
-  description  String?
+  description  String
   urgency      Level
   importance   Level?
   total_value  Decimal
-  net_value    Decimal?
+  gross_value  Decimal?
   delay        Int?
   pdf_url      String?
   receipt      String?

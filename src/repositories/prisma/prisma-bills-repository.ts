@@ -8,6 +8,16 @@ export class PrismaBillsRepository implements BillsRepository {
 
     return billType
   }
+
+  async searchByUser(userID: string) {
+    const bills = await prisma.bill.findMany({
+      where: { user_id: userID },
+      orderBy: { created_at: 'desc' },
+    })
+
+    return bills
+  }
+
   async create(data: Prisma.BillCreateInput) {
     const bill = await prisma.bill.create({
       data,

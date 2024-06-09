@@ -15,7 +15,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
     is_active: z.boolean().default(true),
     urgency: z.enum(['High', 'Medium', 'Low']),
     total_value: z.coerce.number(),
-    net_value: z.coerce.number().optional(),
+    gross_value: z.coerce.number().optional(),
     due_date: z.coerce.date(),
   })
 
@@ -29,7 +29,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
     is_active,
     is_recurring,
     total_value,
-    net_value,
+    gross_value,
     urgency,
     due_date,
   } = createBill.parse(request.body)
@@ -42,7 +42,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
       description,
       is_active,
       is_recurring,
-      net_value,
+      gross_value,
       total_value,
       urgency,
       due_date,

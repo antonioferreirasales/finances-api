@@ -9,3 +9,4 @@ services:
       - POSTGRESQL_USERNAME=docker
       - POSTGRESQL_PASSWORD=docker
       - POSTGRESQL_DATABASE=finances
+      - POSTGRESQL_TIMEZONE=America/Fortaleza

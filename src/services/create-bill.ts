@@ -10,7 +10,7 @@ interface CreateBillUseCaseRequest {
   is_active: boolean
   urgency: $Enums.Level
   total_value: number
-  net_value?: number
+  gross_value?: number
   due_date: Date
 }
 
@@ -31,7 +31,7 @@ export class CreateBillUseCase {
     is_active,
     is_recurring,
     total_value,
-    net_value,
+    gross_value,
     urgency,
     due_date,
   }: CreateBillUseCaseRequest): Promise<CreateBillUseCaseResponse> {
@@ -42,9 +42,8 @@ export class CreateBillUseCase {
       is_recurring,
       is_active,
       urgency,
-      // total_value: new Prisma.Decimal(total_value),
-      total_value: total_value,
-      net_value: net_value,
+      total_value,
+      gross_value,
       due_date,
       user: {
         connect: {
